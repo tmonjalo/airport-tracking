@@ -6,10 +6,18 @@
 	<h1>Décollages et Atterrissages autour de Mérignac</h1>
 {% endblock %}
 
+{% import 'map.html' as map %}
+{% block includes %}{{ map.includes() }}{% endblock %}
+
 {% block section %}
 	{% if flights -%}
 	<h2>Mouvements de l'Avant Veille ({{ flights[0][3] }})</h2>
 	{%- endif %}
+	<div id="screen-info" class="info">
+		<p>La cartographie ne s'affiche que sur les grands écrans.
+			<span onclick="this.parentElement.style.display='none'">×</span>
+		</p>
+	</div>
 	<div class="columns">
 		<table>
 			<thead>
@@ -55,7 +63,39 @@
 				{%- endfor %}
 			</tbody>
 		</table>
+		{{ map.placeholder() }}
 	</div>
+{% endblock %}
+
+{% block script %}
+	<script>
+		const flights = {
+			{% for flight in flights -%}
+				{{ flight[2] }}: {
+					'ad': '{{ flight[9] }}',
+					'trajectory': [
+						{%- for waypoint in flight[8] -%}
+							[{{ waypoint[1] }}, {{ waypoint[2] }}],
+						{%- endfor -%}
+					]
+				},
+			{% endfor %}
+		};
+
+		document.querySelectorAll('tbody tr').forEach(row => {
+
+			row.addEventListener('mouseenter', () => {
+				const flight = row.dataset.flight
+				const trajectory = flights[flight]['trajectory']
+				if (trajectory)
+					show_flight(trajectory, flights[flight]['ad'])
+			});
+
+			row.addEventListener('mouseleave', () => {
+				clear_flight()
+			});
+		});
+	</script>
 {% endblock %}
 
 {% block footer %}
