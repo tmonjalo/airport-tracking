@@ -1,0 +1,5 @@
+dependencies:
+	nginx
+
+vim /etc/nginx/sites-available/nginx.conf
+certbot --nginx -d MY.DNS

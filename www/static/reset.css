@@ -1,0 +1,48 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font: 100% sans-serif;
+	vertical-align: baseline;
+	text-align: left;
+	line-height: 1;
+}
+
+html, body, div, span, p, img, ol, ul, li,
+table, caption, thead, tbody, tfoot, tr, th, td,
+input, button,
+pre, em, strong, sub, sup {
+	margin: 0;
+	padding: 0;
+}
+/* HTML5 tags */
+header, footer, section, aside, nav, article, figure {
+	display: block;
+}
+
+/* fix for broken auto-fit on Android */
+h1, h2, h3, p, pre, li {
+	background: url('');
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+input {
+	border: none;
+}
+img {
+	width: auto;
+}
+a img {
+	border: 0;
+}
+img, th, td {
+	vertical-align: middle
+}
+a {
+	text-decoration: inherit;
+}

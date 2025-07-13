@@ -1,0 +1,58 @@
+:root {
+	--col-subtitle-front: #333;
+	--col-main-back: #eee;
+	--col-button-back: #aaa;
+	--col-button-front: #555;
+	--col-button-front-hover: #fff;
+	--col-link-back-hover: #ddd;
+}
+
+body {
+	background-color: var(--col-main-back);
+}
+
+footer {
+	padding: 1em;
+	color: var(--col-button-front);
+	background-color: var(--col-button-back);
+}
+
+nav a {
+	display: inline-block;
+	padding: 0.5em 1em;
+	background-color: var(--col-button-back);
+}
+nav a:last-of-type {
+	border-radius: 0 0 0.7em 0;
+}
+:is(nav, footer) a {
+	color: var(--col-button-front);
+}
+:is(nav, footer) a:hover {
+	color: var(--col-button-front-hover);
+}
+
+h1 {
+	text-align: center;
+	font: bold 2em sans-serif;
+}
+
+h2 {
+	margin: 2em 0;
+	text-align: center;
+	font-style: italic;
+	color: var(--col-subtitle-front);
+}
+
+section {
+	margin: 2em;
+}
+
+section.index a {
+	display: list-item;
+	margin: 0 1em;
+	padding: 0.7em 0;
+}
+section.index a:hover {
+	background-color: var(--col-link-back-hover);
+}
