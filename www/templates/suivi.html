@@ -6,6 +6,58 @@
 	<h1>Décollages et Atterrissages autour de Mérignac</h1>
 {% endblock %}
 
+{% block section %}
+	{% if flights -%}
+	<h2>Mouvements de l'Avant Veille ({{ flights[0][3] }})</h2>
+	{%- endif %}
+	<div class="columns">
+		<table>
+			<thead>
+				<tr>
+					<th>vol</th>
+					<th>provenance</th>
+					<th>jour</th>
+					<th>heure</th>
+					<th>destination</th>
+					<th>orientation</th>
+					<th>piste</th>
+				</tr>
+			</thead>
+			<tbody>
+				{%- for flight in flights -%}
+					{#
+						callsign,
+						departure,
+						time,
+						localdate,
+						localtime,
+						arrival,
+						track_orientation,
+						track_name,
+						trajectory,
+						ad
+					#}
+					<tr data-flight={{ flight[2] }}>
+					{%- for value in flight -%}
+						{# skip time and trajectory #}
+						{%- if loop.index0 != 2 and loop.index0 < 8 -%}
+							{%- if loop.index0 == 6 and flight[9] == 'a' -%}
+								<td style="color: red">
+							{%- elif loop.index0 == 6 -%}
+								<td style="color: blue">
+							{%- else -%}
+								<td>
+							{%- endif -%}
+							{{ value }}</td>
+						{%- endif -%}
+					{%- endfor -%}
+					</tr>
+				{%- endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
 {% block footer %}
 	Source: <a href="https://opensky-network.org">OpenSky Network</a>
 {% endblock %}

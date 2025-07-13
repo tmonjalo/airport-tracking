@@ -5,6 +5,13 @@
 	--col-button-front: #555;
 	--col-button-front-hover: #fff;
 	--col-link-back-hover: #ddd;
+	--col-table-border: var(--col-button-back);
+	--col-table-header-back: var(--col-table-border);
+	--col-table-header-front: var(--col-button-front);
+	--col-table-body-back: #fff;
+	--col-table-body-back-alternate: #f6f6f6;
+	--col-table-body-back-hover: var(--col-link-back-hover);
+	--col-table-body-front: #333;
 }
 
 body {
@@ -55,4 +62,55 @@ section.index a {
 }
 section.index a:hover {
 	background-color: var(--col-link-back-hover);
+}
+
+.columns {
+	display: flex;
+	align-items: flex-start;
+}
+
+section table {
+	margin: auto;
+	overflow-x: auto;
+	border: 1px solid var(--col-table-border);
+}
+section :is(th, td) {
+	border: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+section th {
+	position: sticky;
+	top: 0;
+	background-color: var(--col-table-header-back);
+	color: var(--col-table-header-front);
+	padding: 1em;
+}
+section tr {
+	background-color: var(--col-table-body-back);
+	color: var(--col-table-body-front);
+}
+section tr:nth-child(even) {
+	background-color: var(--col-table-body-back-alternate);
+}
+section tr:hover {
+	background-color: var(--col-table-body-back-hover);
+}
+section td {
+	font-size: 80%;
+	padding: 0.3em;
+}
+
+@media screen and (width < 1100px) {
+	section:has(table) {
+		margin: 0;
+	}
+	section th {
+		padding: 0.7em 0.3em;
+	}
+}
+@media screen and (width < 600px) {
+	section :is(th, td):is(:nth-child(2), :nth-child(5)) {
+		display: none;
+	}
 }
