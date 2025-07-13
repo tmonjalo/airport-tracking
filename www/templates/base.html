@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>{% block title required %}{% endblock %}</title>
+	<link rel="stylesheet" href="/static/reset.css">
+	<link rel="stylesheet" href="/static/content.css">
+	{% block includes %}{% endblock %}
+</head>
+<body>
+	<nav>
+		<a href="/">index</a>
+	</nav>
+	<header>
+		{% block header %}{% endblock %}
+	</header>
+	<section>
+		{% block section %}{% endblock %}
+	</section>
+	<footer>
+		{% block footer %}{% endblock %}
+	</footer>
+	{% block script %}{% endblock %}
+</body>
+</html>

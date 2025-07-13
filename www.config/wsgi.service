@@ -1,0 +1,17 @@
+[Unit]
+Description=Gunicorn instance to serve aeroport app
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/aeroport
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:aeroport.sock -m 007 wsgi:app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

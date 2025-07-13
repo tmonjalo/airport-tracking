@@ -1,6 +1,10 @@
 dependencies:
 	nginx
+	gunicorn
+	python3-flask
 	jq
 
 vim /etc/nginx/sites-available/nginx.conf
 certbot --nginx -d MY.DNS
+vim /var/www/aeroport/wsgi.py
+vim /etc/systemd/system/wsgi.service
