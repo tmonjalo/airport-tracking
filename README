@@ -1,3 +1,4 @@
 Website for airport tracking, tuned for Bordeaux, France.
 
+- data: CSV files built in Bash with OpenSky API
 - web server: nginx
